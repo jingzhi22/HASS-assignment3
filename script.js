@@ -55,7 +55,7 @@ d3.csv("./data.csv")
             return feature.properties.Description.includes(townName)
             });
         var townFeature = boundary.features[boundaryIndex];
-        var townCoordinates = townFeature.geometry.coordinates[0];
+        var townCoordinates = townFeature.geometry.coordinates;
         var town_av_ppsm = town[i].av_ppsm;
 
         var lat = [];
