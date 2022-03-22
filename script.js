@@ -46,16 +46,11 @@ d3.csv("./data.csv")
     for (let i = 0; i < town.length; i++)
     {
         var townName = town[i].name;
-        /*
-        var boundaryIndex = boundary.features.findIndex(function(feature) {
-            return feature.properties.PLN_AREA_N == townName
-            });
-        */
         var boundaryIndex = boundary.features.findIndex(function(feature) {
             return feature.properties.Description.includes(townName)
             });
         var townFeature = boundary.features[boundaryIndex];
-        var townCoordinates = townFeature.geometry.coordinates;
+        var townCoordinates = townFeature.geometry.coordinates[0];
         var town_av_ppsm = town[i].av_ppsm;
 
         var lat = [];
