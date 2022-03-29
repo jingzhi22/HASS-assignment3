@@ -1,16 +1,45 @@
 <html>
   <meta charset="utf-8">
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<svg id="my_dataviz" width="630" height="350" style="background-color:green"></svg>
+<link rel="stylesheet" href="style.css">
+<svg id="my_dataviz"></svg>
 <script src="script.js"></script>
 <body>
-  <p>
-    Todo list
-    <br><br>
-    Change circles to dollar sign paths
-    <br><br>
-    Change svg circles into interactive marker showing actual value and name
-  </p>
+  <h1>
+    Assignment 3
+  </h1>
+  <h2>
+    Tay Jing Zhi
+  </h2>
+  <h5>
+    Idiom
+  </h5>
+  <ul>
+    <li>
+      Houses are valued differly according to the town they are in. Two houses of the same size can fetch a different price simply by the different in location.
+    </li>
+    <li>
+      To index the average value of houses per town, we map the average price per square meter (PPSM) of each unit sold within the town boundaries.
+    </li>
+    <li>
+      PPSM is calculated by diving the price of the unit by the floor area of the unit. This is visuliaed using the size of the dollar sign. Larger the sign, higher the value.
+    </li>
+    <li>
+      Town boundaries are drawn directly from a government based data source. https://data.gov.sg/
+    </li>
+  </ul>
+  <h5>
+    Visualization
+  </h5>
+  <ul>
+    <li>
+      Tooltip given enough buffer space to not be covered by cursor.
+    </li>
+    <li>
+      Would be great to hightlight boundary of town when mousing over. However, not sure how to combine read from two data sources in a single function.
+    </li>
+  </ul>
+
 
 </body>
 </html>
