@@ -46,21 +46,8 @@ d3.csv("./data.csv")
     // define tooltip
     var Tooltip = d3.select("body").append("div")
         .attr("class", "Tooltip")
-        .style("opacity", 0);
-        
-    // Draw the singapore map
-    svg.append("g")
-        .selectAll("path")
-        .data(boundary.features)
-        .join("path")
-        .attr("fill", "#bbbbbb")
-        .attr("d", d3.geoPath().projection(projection))
-        .attr("id", function(d) { return d.properties.PLN_AREA_N; })
-        .attr("class","Town")
-        .style("stroke", "#888888")
-        .style("stroke-width", 1)
-        .style("opacity", 1)
     
+    // Define mouseOvers
     let mouseOver = function(event, d){
         Tooltip.transition()
             .style("opacity", .9);
@@ -77,20 +64,30 @@ d3.csv("./data.csv")
         Tooltip.transition()
             .style("opacity", 0);
     }
-    
-    // Add $$$
+
+    // Draw the singapore map
+    svg.append("g")
+        .selectAll("path")
+        .data(boundary.features)
+        .join("path")
+        .attr("fill", "#bbbbbb")
+        .attr("d", d3.geoPath().projection(projection))
+        .attr("id", function(d) { return d.properties.PLN_AREA_N; })
+        .attr("class","Town")
+        .style("stroke", "#888888")
+        .style("stroke-width", 1)
+        .style("opacity", 1)
+
+    // Draw $ labels
     svg.selectAll('g')
         .data(town)
         .enter()
         .append('text')
+            .attr("class","label")
             .attr("x", function(d) { return d.lon; })
             .attr("y", function(d) { return d.lat; })
-            .attr("opacity",1.0)
             .text("$")
-            .attr("stroke-width","4px")
             .attr("font-size", function(d) { return map_range(d.av_ppsm,2000,10000,3,90); })
-            .attr("dominant-baseline", "middle")
-            .attr("text-anchor", "middle")
         .on("mouseover", mouseOver )
         .on("mouseleave", mouseLeave )
     
@@ -100,8 +97,13 @@ d3.csv("./data.csv")
 })
 
 svg.append('text')
-.attr("x","90%")
+.attr("x","98%")
 .attr("y","90%")
-.text(
-    "av. PPM: Average price per square meter of units sold after 2017"
-    )
+.attr("class","legend")
+.text("Av. PPM: Average price per square meter")
+
+svg.append('text')
+.attr("x","98%")
+.attr("y","95%")
+.attr("class","legend")
+.text("Av. LC: Average lease commencement date")

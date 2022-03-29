@@ -15,3 +15,15 @@ svg {
     background-color: #92d1c9;
     display: block;
 }
+
+text.legend {
+    font-size: 11px;
+    text-anchor: end;
+}
+
+text.label {
+    opacity: 1.0;
+    stroke-width: 4px;
+    dominant-baseline: middle;
+    text-anchor: middle;
+}
